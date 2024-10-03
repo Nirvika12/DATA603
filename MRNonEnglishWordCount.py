@@ -14,6 +14,8 @@ class MRNonEnglishWordCount(MRJob):
                 #To check if word is not in Dictionary
                 if not english_dict.check(lower_word):
                     yield lower_word, 1  # To yield non-english word with count 1
+                    yield "__total__", 1 # total count
+
 
     def reducer(self, word, counts):
         # sum of each non-english word count
